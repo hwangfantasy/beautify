@@ -15,6 +15,8 @@ import java.io.StringWriter;
  * @link http://www.oschina.net/code/snippet_17793_4733
  */
 public class BeautifyXml {
+    public BeautifyXml() {
+    }
 
     public static String beautifyXml(String sourceXml) {
         String output = "";

@@ -8,6 +8,8 @@ import org.jsoup.nodes.Document;
  * 采用jsoup格式化HTML
  */
 public class BeautifyHtml {
+    public BeautifyHtml() {
+    }
 
     public static String beautifyHtml(String sourceHtml){
         Document document = Jsoup.parseBodyFragment(sourceHtml);

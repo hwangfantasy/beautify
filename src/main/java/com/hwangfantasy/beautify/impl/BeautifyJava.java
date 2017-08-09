@@ -13,6 +13,8 @@ import java.io.IOException;
 public class BeautifyJava {
     private static final String PATH = System.getProperty("user.dir") + File.separator + "beautifyJava.txt";
 
+    public BeautifyJava() {
+    }
 
     public static String beautifyJava(String sourceJava) {
         Jalopy jalopy = new Jalopy();
