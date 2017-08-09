@@ -1,7 +1,4 @@
-import com.hwangfantasy.beautify.impl.BeautifyHtml;
-import com.hwangfantasy.beautify.impl.BeautifyJava;
-import com.hwangfantasy.beautify.impl.BeautifyJson;
-import com.hwangfantasy.beautify.impl.BeautifyXml;
+import com.hwangfantasy.beautify.impl.*;
 import org.junit.Test;
 
 /**
@@ -64,6 +61,22 @@ public class BeautifyTest {
     public void beautifyXmlTest(){
         String str = "<RequestData><HeadData><UserCode>sh1_admin</UserCode><UserName>sh1_admin</UserName><UserCompanyCode>3107</UserCompanyCode><UserCompanyName>上海分公司一部</UserCompanyName><RequestType>03</RequestType></HeadData><BodyData><ReportId>113100000033</ReportId><Insurant>a5rfg87</Insurant><NumberPlate>沪E78612</NumberPlate><EngineModel></EngineModel><CarVin></CarVin><AccidentDate>2011-02-25 15:07:00</AccidentDate><ReportDate>2011-02-25 15:07:00</ReportDate><Province>310000</Province><City>310100</City><District></District><AccidentPlace>1</AccidentPlace><AccidentLongitude></AccidentLongitude><AccidentLatitude></AccidentLatitude><SurveyLongitude></SurveyLongitude><SurveyLatitude></SurveyLatitude><SceneReportFlag></SceneReportFlag><Reporter></Reporter><ReporterTel></ReporterTel><SurveyPlace></SurveyPlace><OperatorId>3525</OperatorId><OperatorName>sh_admin</OperatorName><ReportDealId>30000800</ReportDealId><ReportDealName>江苏分公司</ReportDealName><CompanyName></CompanyName><CustomerTypeCode></CustomerTypeCode><ForcePolicyId>a5rfg87a5rfg87a5rfg87</ForcePolicyId><BizPolicyId></BizPolicyId><Index>0</Index><FieldName>5</FieldName></BodyData></RequestData>";
         String output = BeautifyXml.beautifyXml(str);
+        System.out.println(output);
+    }
+
+    @Test
+    public void beautifyJs(){
+        String str =
+                "/**\n" +
+                " * 车险用于将input域中的值转成json的方法\n" +
+                " * @returns\t当前页面input域中所有的值组成的ajax中调用的data\n" +
+                " */\n" +
+                "function inputToJSON() {var jsondata = \"{\\\"a\\\":\\\"1\\\"\"; //为了让json更好拼将第一个“,”前的值设置一个不用的参数a:1\n" +
+                "    $(\"input\").each(function(i) {if ($(this).attr(\"name\") != \"carCodex\" && $(this).attr(\"name\") != \"carInfo.EADJson\" //name=carInfo.EADJson的值是个json串会影响json生成，需要过滤掉\n" +
+                "            && $(this).attr(\"name\") != undefined) { //name=carCodex的值是个json串会影响json生成，需要过滤掉 \n" +
+                "            jsondata = jsondata + \",\\\"\" + $(this).attr(\"name\") + \"\\\":\\\"\" + $(this).val() + \"\\\"\";\n" +
+                "        }});jsondata = jsondata + \"}\";jsondata = jsondata.replace(/\\s/g, \"\");return $.parseJSON(jsondata);}function configJQ(data) {if (\"1\" == data.startDateJqFlag) {$(\"#jqType\").parent().hide();$(\"#jqTimeLable\").show();} else if (\"0\" == data.startDateJqFlag) {$(\"#jqType\").parent().show();$(\"#jqTimeLable\").hide();}}";
+        String output = BeautifyJs.beautifyJs(str);
         System.out.println(output);
     }
 }

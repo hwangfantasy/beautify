@@ -37,6 +37,7 @@ public class Beautify {
             case CSS:
                 break;
             case JS:
+                output = BeautifyJs.beautifyJs(source);
                 break;
             default:
                 break;
